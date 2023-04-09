@@ -1,12 +1,13 @@
-class Signleton {
-  name: string = ''
-  age: number = 0
-  static instance: boolean = false
+export class Signleton {
+  static firstInstance: any = null
+  private name: string = ''
+  private age: number = 0
   constructor(_name: string, _age: number) {
-    if (!Signleton.instance) {
+    if (!Signleton.firstInstance) {
       this.name = _name
       this.age = _age
-      Signleton.instance = true
+      Signleton.firstInstance = this
     }
+    return Signleton.firstInstance
   }
 }
